@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LIFORM | Laboratorio de Informática Forense Móvil</title>
+  <meta name="description" content="Laboratorio de Informática Forense Móvil y Recuperación de Datos Críticos para Empresas. Solución para incidentes tecnológicos y peritaje móvil corporativo. CUN 2026.">
+  
+  <!-- Editorial & Precision Typography (Newsreader, Instrument Serif, Albert Sans, Fira Code) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Leaflet CSS & JS for Interactive Forensic GPS Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Precision Operational Banner -->
+  <aside class="top-status-bar" aria-label="Estado operativo del sistema forense">
+    <div class="status-indicator">
+      <span class="status-dot pulse"></span>
+      <span class="status-text">LIFORM LAB OS &middot; PROTOCOLO ISO/IEC 27037:2012 AUDITABLE &middot; CUN SINCELEJO</span>
+    </div>
+    <div class="status-meta">
+      <span class="meta-tag"><i data-lucide="shield-check"></i> CADENA DE CUSTODIA ACTIVA</span>
+      <span class="meta-tag font-mono" id="current-timestamp">2026-10-26 12:00:00 UTC-5</span>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Header -->
+  <header class="app-header">
+    <div class="brand-container">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 36 36" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="36" height="36" rx="8" fill="#1e1814" stroke="#9e5233" stroke-width="1.5"/>
+          <path d="M10 25V11L18 7L26 11V25L18 29L10 25Z" stroke="#f4ece1" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M18 14V22M14 18H22" stroke="#15803d" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="brand-copy">
+        <span class="brand-title">LIFORM</span>
+        <span class="brand-subtitle">Laboratorio de Informática Forense Móvil</span>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs" id="main-nav" aria-label="Navegación principal">
+      <button class="nav-btn active" data-tab="tab-vision">
+        <i data-lucide="info"></i>
+        <span>¿Qué es LIFORM?</span>
+      </button>
+      <button class="nav-btn enterprise-nav-btn" data-tab="tab-enterprise">
+        <i data-lucide="building-2"></i>
+        <span>Portal Empresas (Pruebas)</span>
+        <span class="nav-counter">Demo</span>
+      </button>
+      <button class="nav-btn" data-tab="tab-slides">
+        <i data-lucide="presentation"></i>
+        <span>Sustentación & Slides</span>
+      </button>
+      <button class="nav-btn" data-tab="tab-lab">
+        <i data-lucide="terminal"></i>
+        <span>Platform-Tools & Redmi 12</span>
+      </button>
+      <button class="nav-btn" data-tab="tab-report">
+        <i data-lucide="file-check"></i>
+        <span>Plantilla Pericial</span>
+      </button>
+      <button class="nav-btn" data-tab="tab-specs">
+        <i data-lucide="cpu"></i>
+        <span>Arquitectura & Costos</span>
+      </button>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <button class="btn btn-sm btn-accent" onclick="switchTab('tab-enterprise')">
+        <i data-lucide="sparkles"></i>
+        <span>Probar como Empresa</span>
+      </button>
+      <button class="btn btn-sm btn-outline" onclick="window.print()" title="Imprimir o guardar en PDF el informe oficial">
+        <i data-lucide="printer"></i>
+        <span>Imprimir Informe</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="app-main">
+    
+    <!-- ========================================== -->
+    <!-- TAB 1: VISIÓN GENERAL Y PROPÓSITO DEL LAB -->
+    <!-- ========================================== -->
+    <section id="tab-vision" class="tab-pane active">
+      <article class="hero-surface">
+        <div class="hero-left">
+          <div class="hero-kicker">PROYECTO DE INVESTIGACIÓN APLICADA &middot; CUN SINCELEJO 2026</div>
+          <h1 class="hero-headline">
+            Laboratorio de Informática Forense Móvil y Recuperación de Datos Críticos
+          </h1>
+          <p class="hero-lead">
+            Una solución arquitectónica y metodológica orientada a resolver incidentes de seguridad, 
+            pérdida de datos y contingencias tecnológicas en dispositivos móviles corporativos (smartphones y tabletas), 
+            sustituyendo la improvisación artesanal por un protocolo riguroso bajo la norma internacional 
+            <strong>ISO/IEC 27037:2012</strong>.
+          </p>
+          <div class="hero-metrics-row">
+            <div class="metric-unit">
+              <span class="metric-val">24–72h</span>
+              <span class="metric-label">SLA de Respuesta</span>
+            </div>
+            <div class="metric-unit">
+              <span class="metric-val">SHA-256</span>
+              <span class="metric-label">Integridad Matemática</span>
+            </div>
+            <div class="metric-unit">
+              <span class="metric-val">5 Subsistemas</span>
+              <span class="metric-label">Segregación de Funciones</span>
+            </div>
+            <div class="metric-unit">
+              <span class="metric-val">Android & iOS</span>
+              <span class="metric-label">Cobertura Multiplataforma</span>
+            </div>
+          </div>
+          <div class="hero-cta-group">
+            <button class="btn btn-primary" onclick="switchTab('tab-enterprise')">
+              <i data-lucide="building-2"></i> Abrir Portal de Pruebas para Empresas
+            </button>
+            <button class="btn btn-secondary" onclick="switchTab('tab-lab')">
+              <i data-lucide="terminal"></i> Probar Estación Platform-Tools
+            </button>
+            <button class="btn btn-ghost" onclick="switchTab('tab-slides')">
+              <i data-lucide="presentation"></i> Ver Diapositivas & Guion
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <!-- Signature Editorial Reference Card (Exact Match to User Reference Images) -->
+          <div class="editorial-reference-card" id="hero-reference-card">
+            <div class="ref-card-header">
+              <span class="ref-card-tracker">LANZAMIENTO / 14</span>
+              <span class="ref-card-badge"><span class="dot"></span> En buen camino</span>
+            </div>
+            <div class="ref-card-eyebrow">PLANIFICACIÓN FORENSE &middot; ISO/IEC 27037</div>
+            <h3 class="ref-card-headline">
+              Enviar el <em>plan de auditoría</em> antes del peritaje.
+            </h3>
+            <p class="ref-card-desc">
+              Propietarios, cadena de custodia y cálculo SHA-256, todo en una sola vista auditable.
+            </p>
+            <div class="ref-card-progress">
+              <div class="ref-card-progress-bar" style="width: 73%;"></div>
+            </div>
+            <div class="ref-card-footer">
+              <span class="ref-card-footer-info">8 de 11 decisiones periciales cerradas</span>
+              <a class="ref-card-footer-action" onclick="switchTab('tab-lab')">Revisar el plan &rarr;</a>
+            </div>
+
+            <!-- Terminal Specimen Metadata (Xiaomi Redmi 12) -->
+            <div class="ref-card-specimen-snippet">
+              <div class="snippet-item">
+                <span class="snippet-lbl">Dispositivo</span>
+                <span class="snippet-val">Xiaomi Redmi 12 &middot; Android 13</span>
+              </div>
+              <div class="snippet-item">
+                <span class="snippet-lbl">Identificador ADB</span>
+                <span class="snippet-val font-mono">106e57767d74</span>
+              </div>
+              <div class="snippet-item">
+                <span class="snippet-lbl">Firma SHA-256</span>
+                <span class="snippet-val font-mono">e3b0c442...855 &check;</span>
+              </div>
+              <div class="snippet-item">
+                <span class="snippet-lbl">Radiofrecuencia</span>
+                <span class="snippet-val text-patina">Modo Avión &middot; Faraday</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Problem vs Solution Comparison -->
+      <section class="section-block">
+        <header class="section-header">
+          <h2 class="section-heading">Soporte TI Tradicional vs. Protocolo Forense LIFORM</h2>
+          <p class="section-sub">Diferencias críticas entre la manipulación artesanal de incidentes móviles y un proceso pericial auditable.</p>
+        </header>
+
+        <div class="comparison-grid">
+          <div class="panel panel-danger">
+            <div class="panel-header-badge text-danger"><i data-lucide="alert-octagon"></i> Soporte TI Tradicional (Improvisado)</div>
+            <h3 class="panel-title">Riesgos Técnicos y Procesales Frecuentes</h3>
+            <ul class="clean-list list-danger">
+              <li>
+                <strong>Sobrescritura irreversible de sectores:</strong> Encender el teléfono o conectarlo sin bloqueadores genera logs de sistema y caches que destruyen la evidencia volátil y las marcas temporales.
+              </li>
+              <li>
+                <strong>Ruptura inmediata de cadena de custodia:</strong> La ausencia de actas formales de ingreso y cálculo de hash invalida cualquier archivo como prueba en juzgados o procesos disciplinarios.
+              </li>
+              <li>
+                <strong>Intentos artesanales de recuperación:</strong> La instalación indiscriminada de utilidades o APKs modifica las particiones SQLite de bases de datos de mensajería y transacciones.
+              </li>
+              <li>
+                <strong>Falta de aislamiento de radiofrecuencia:</strong> Dejar el dispositivo conectado a la red permite la recepción de mensajes, llamadas o comandos de borrado remoto (remote wipe).
+              </li>
+            </ul>
+          </div>
+
+          <div class="panel panel-success">
+            <div class="panel-header-badge text-patina"><i data-lucide="shield-check"></i> Protocolo Forense LIFORM</div>
+            <h3 class="panel-title">Garantías Técnicas bajo Estándares Internacionales</h3>
+            <ul class="clean-list list-success">
+              <li>
+                <strong>Preservación física y aislamiento electromagnético:</strong> El equipo se aísla de inmediato en jaula de Faraday portátil y bolsas antiestáticas, bloqueando todo intento de borrado remoto.
+              </li>
+              <li>
+                <strong>Inmutabilidad matemática con SHA-256:</strong> Cada archivo o imagen extraída se firma criptográficamente antes y después para certificar que ningún bit fue alterado durante el peritaje.
+              </li>
+              <li>
+                <strong>Cadena de custodia continua (ISO/IEC 27037):</strong> Cada custodio, fecha, hora y acción realizada queda asentada en el formulario formal del laboratorio.
+              </li>
+              <li>
+                <strong>Plantilla oficial de informe pericial:</strong> Dictamen estructurado con identificación de IMEI, hallazgos catalogados por relevancia y firmas legalmente admisibles.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- The 4 ISO/IEC 27037 Phases -->
+      <section class="section-block">
+        <header class="section-header">
+          <h2 class="section-heading">Fases Obligatorias de la Norma ISO/IEC 27037:2012</h2>
+          <p class="section-sub">Directrices internacionales aplicadas en cada procedimiento pericial de LIFORM.</p>
+        </header>
+
+        <div class="four-col-grid">
+          <div class="step-panel">
+            <span class="step-num">01</span>
+            <div class="step-icon"><i data-lucide="search"></i></div>
+            <h4 class="step-title">Identificación</h4>
+            <p class="step-text">Reconocimiento y documentación fotográfica de marca, modelo, número IMEI, versión de firmware y estado físico del terminal sin modificar el almacenamiento.</p>
+          </div>
+          <div class="step-panel">
+            <span class="step-num">02</span>
+            <div class="step-icon"><i data-lucide="package-check"></i></div>
+            <h4 class="step-title">Recolección</h4>
+            <p class="step-text">Aseguramiento físico del equipo, desconexión de redes móviles/WiFi mediante modo avión o jaula de Faraday y apertura formal de la custodia.</p>
+          </div>
+          <div class="step-panel">
+            <span class="step-num">03</span>
+            <div class="step-icon"><i data-lucide="hard-drive-download"></i></div>
+            <h4 class="step-title">Adquisición</h4>
+            <p class="step-text">Extracción de datos lógicos, de sistema de archivos o físicos mediante cables certificados y bloqueadores de escritura sin tocar la memoria original.</p>
+          </div>
+          <div class="step-panel">
+            <span class="step-num">04</span>
+            <div class="step-icon"><i data-lucide="lock"></i></div>
+            <h4 class="step-title">Preservación</h4>
+            <p class="step-text">Generación de firma criptográfica SHA-256, resguardo redundante en servidor NAS cifrado y retención mínima de 6 meses para fines de auditoría legal.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5 Functional Subsystems -->
+      <section class="section-block">
+        <header class="section-header">
+          <h2 class="section-heading">Arquitectura del Laboratorio: 5 Subsistemas Funcionales</h2>
+          <p class="section-sub">Estructura operativa bajo el principio estricto de segregación de funciones.</p>
+        </header>
+
+        <div class="subsystems-layout">
+          <div class="subsystem-box">
+            <div class="sub-head"><i data-lucide="clipboard-list"></i> 1. Recepción y Custodia</div>
+            <p class="sub-desc">Recepción del terminal, registro del incidente y llenado inicial de la cadena de custodia.</p>
+            <span class="sub-meta">Bolsas antiestáticas, Jaula de Faraday</span>
+          </div>
+
+          <div class="subsystem-box">
+            <div class="sub-head"><i data-lucide="cpu"></i> 2. Adquisición Forense</div>
+            <p class="sub-desc">Extracción de copias lógicas o volcados físicos protegiendo el almacenamiento de origen.</p>
+            <span class="sub-meta">Bloqueadores de escritura, Platform-Tools</span>
+          </div>
+
+          <div class="subsystem-box">
+            <div class="sub-head"><i data-lucide="microscope"></i> 3. Análisis y Recuperación</div>
+            <p class="sub-desc">Examen de artefactos, bases de datos SQLite, metadatos EXIF y paquetes de aplicaciones.</p>
+            <span class="sub-meta">Autopsy, Andriller, FTK Imager</span>
+          </div>
+
+          <div class="subsystem-box">
+            <div class="sub-head"><i data-lucide="server"></i> 4. Almacenamiento Seguro</div>
+            <p class="sub-desc">Custodia digital blindada con roles de acceso estrictos (RBAC) y copias espejo cifradas.</p>
+            <span class="sub-meta">Servidor NAS cifrado, Retención 6+ meses</span>
+          </div>
+
+          <div class="subsystem-box">
+            <div class="sub-head"><i data-lucide="file-check-2"></i> 5. Generación de Informes</div>
+            <p class="sub-desc">Elaboración del dictamen pericial con trazabilidad probatoria, firmas y hashes matemáticos.</p>
+            <span class="sub-meta">Plantilla oficial ISO 27037, Hash SHA-256</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Academic Institutional Footnote -->
+      <footer class="academic-strip">
+        <div class="strip-header">
+          <span class="strip-inst">CORPORACIÓN UNIFICADA NACIONAL DE EDUCACIÓN SUPERIOR &middot; CUN</span>
+          <span class="strip-degree">Facultad de Ingeniería de Sistemas &middot; Sincelejo, 2026</span>
+          <span class="strip-course">Mantenimiento de Dispositivos Móviles</span>
+        </div>
+        <div class="team-roster">
+          <div class="team-col"><strong>Luis Angel Olivera Hernandez</strong><span>Investigador Principal / Analista</span></div>
+          <div class="team-col"><strong>Luis Andres Mendoza Herazo</strong><span>Investigador / Infraestructura & Custodia</span></div>
+          <div class="team-col"><strong>Harold Martinez Ricardo</strong><span>Investigador / Adquisición Forense</span></div>
+          <div class="team-col"><strong>Kerwin Carlos Torres Castillo</strong><span>Investigador / Protocolos Criptográficos</span></div>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: PORTAL EMPRESARIAL (NUEVO MÓDULO)   -->
+    <!-- ========================================== -->
+    <section id="tab-enterprise" class="tab-pane">
+      <div class="enterprise-container">
+        
+        <!-- Enterprise Header Banner -->
+        <div class="enterprise-hero">
+          <div class="enterprise-hero-copy">
+            <span class="ent-kicker">SUITE DE EVALUACIÓN Y TRIAGE CORPORATIVO</span>
+            <h2 class="ent-headline">Portal de Diagnóstico Forense para Empresas</h2>
+            <p class="ent-sub">
+              Diseñado para directores de TI, auditores internos, oficiales de seguridad de la información (CISO) y asesores jurídicos. 
+              Evalúe la viabilidad legal de sus incidentes móviles, cotice peritajes con tiempos SLA y genere actas preliminares con firma SHA-256.
+            </p>
+          </div>
+          <div class="enterprise-hero-badges">
+            <div class="ent-stat">
+              <span class="ent-stat-num">100%</span>
+              <span class="ent-stat-label">Conformidad ISO/IEC 27037</span>
+            </div>
+            <div class="ent-stat">
+              <span class="ent-stat-num">&lt; 24h</span>
+              <span class="ent-stat-label">Triage de Emergencia</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Interactive Business Modules Grid -->
+        <div class="ent-grid">
+          
+          <!-- Column 1: Incident Simulator & Legal Viability Index -->
+          <div class="ent-card">
+            <div class="ent-card-header">
+              <div class="card-icon"><i data-lucide="shield-alert"></i></div>
+              <div>
+                <h3>1. Simulador de Incidentes & Triage</h3>
+                <span class="card-sub">Verifique si su evidencia conserva validez legal</span>
+              </div>
+            </div>
+
+            <div class="ent-card-body">
+              <div class="form-group">
+                <label>Seleccione el tipo de incidente:</label>
+                <select id="ent-incident-type" class="form-control select-ent">
+                  <option value="leak" selected>Fuga de información confidencial / Empleado saliente</option>
+                  <option value="stolen">Dispositivo sustraído con acceso a banca o ERP (Nequi/Bancolombia)</option>
+                  <option value="crash">Falla crítica / Dispositivo dañado con datos no respaldados</option>
+                  <option value="fraud">Sospecha de fraude interno o suplantación de identidad</option>
+                </select>
+              </div>
+
+              <div class="triage-checklist mt-3">
+                <label class="section-label">Checklist de Preservación Inicial (ISO 27037):</label>
+                
+                <label class="check-row">
+                  <input type="checkbox" id="chk-airplane" checked>
+                  <span>¿El dispositivo fue colocado en Modo Avión inmediatamente?</span>
+                </label>
+                
+                <label class="check-row">
+                  <input type="checkbox" id="chk-no-modify" checked>
+                  <span>¿Se evitó encender o abrir aplicaciones de mensajería?</span>
+                </label>
+                
+                <label class="check-row">
+                  <input type="checkbox" id="chk-faraday">
+                  <span>¿Se encuentra custodiado en bolsa antiestática o jaula Faraday?</span>
+                </label>
+                
+                <label class="check-row">
+                  <input type="checkbox" id="chk-no-repair" checked>
+                  <span>¿Se evitó llevarlo a centros de servicio no autorizados?</span>
+                </label>
+              </div>
+
+              <!-- Real-time Viability Gauge -->
+              <div class="viability-meter mt-3">
+                <div class="viability-header">
+                  <span>Índice de Preservación Probatoria:</span>
+                  <strong id="viability-score-text" class="text-patina">85% - ADMISIBILIDAD ALTA</strong>
+                </div>
+                <div class="viability-bar-track">
+                  <div id="viability-bar-fill" class="viability-bar-fill" style="width: 85%;"></div>
+                </div>
+                <p id="viability-recommendation" class="viability-hint">
+                  El protocolo inicial es adecuado. La evidencia conserva alta inmutabilidad; proceda con la extracción lógica de inmediato.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: SLA & Budget Quotation Tool -->
+          <div class="ent-card">
+            <div class="ent-card-header">
+              <div class="card-icon"><i data-lucide="calculator"></i></div>
+              <div>
+                <h3>2. Cotizador de Servicio & SLA Empresarial</h3>
+                <span class="card-sub">Cálculo de tiempos y alcance técnico</span>
+              </div>
+            </div>
+
+            <div class="ent-card-body">
+              <div class="form-group">
+                <label>Tamaño de la Empresa:</label>
+                <select id="ent-company-size" class="form-control select-ent">
+                  <option value="micro">Microempresa (1 - 10 empleados)</option>
+                  <option value="pyme" selected>Pequeña / Mediana Empresa (PYME regional)</option>
+                  <option value="corp">Corporativo / Flota Empresarial</option>
+                </select>
+              </div>
+
+              <div class="form-group mt-2">
+                <label>Cantidad de Dispositivos a Intervenir:</label>
+                <div class="range-selector">
+                  <input type="range" id="ent-devices-count" min="1" max="10" value="1" class="range-slider">
+                  <span id="ent-devices-display" class="range-val">1 Dispositivo</span>
+                </div>
+              </div>
+
+              <div class="form-group mt-2">
+                <label>Nivel de SLA Requerido:</label>
+                <div class="sla-options">
+                  <label class="sla-radio">
+                    <input type="radio" name="sla-radio" value="24" checked>
+                    <span class="sla-chip">
+                      <strong>Urgente (24h)</strong>
+                      <small>Respuesta en tiempo real</small>
+                    </span>
+                  </label>
+                  <label class="sla-radio">
+                    <input type="radio" name="sla-radio" value="48">
+                    <span class="sla-chip">
+                      <strong>Estándar (48h)</strong>
+                      <small>Auditoría regular</small>
+                    </span>
+                  </label>
+                  <label class="sla-radio">
+                    <input type="radio" name="sla-radio" value="72">
+                    <span class="sla-chip">
+                      <strong>Programado (72h)</strong>
+                      <small>Peritaje extendido</small>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="quote-summary-box mt-3">
+                <div class="quote-row">
+                  <span>Adquisición Lógica + Hash SHA-256:</span>
+                  <strong>Incluido</strong>
+                </div>
+                <div class="quote-row">
+                  <span>Plantilla Pericial ISO/IEC 27037:</span>
+                  <strong>Incluido</strong>
+                </div>
+                <div class="quote-row total-row">
+                  <span>Inversión Estimada:</span>
+                  <strong id="quote-price-display" class="quote-price">$ 450.000 COP</strong>
+                </div>
+              </div>
+
+              <button class="btn btn-primary w-100 mt-3" id="btn-create-enterprise-ticket">
+                <i data-lucide="file-plus"></i> Generar Orden de Intervención Preliminar
+              </button>
+            </div>
+          </div>
+
+          <!-- Column 3: Forensic File Sandbox & Integrity Hasher -->
+          <div class="ent-card">
+            <div class="ent-card-header">
+              <div class="card-icon"><i data-lucide="binary"></i></div>
+              <div>
+                <h3>3. Sandbox de Prueba & Validación SHA-256</h3>
+                <span class="card-sub">Pruebe el cálculo criptográfico con archivos reales</span>
+              </div>
+            </div>
+
+            <div class="ent-card-body">
+              <p class="sandbox-desc">
+                Suba cualquier log de respaldo, archivo de base de datos (`.db`), foto o reporte de su empresa para verificar cómo el laboratorio LIFORM genera la firma matemática inmutable de recepción.
+              </p>
+
+              <!-- Drag & Drop Zone -->
+              <div class="drop-zone" id="ent-drop-zone">
+                <i data-lucide="upload-cloud" class="drop-icon"></i>
+                <span class="drop-title">Arrastre aquí su archivo de muestra</span>
+                <span class="drop-sub">o haga clic para seleccionar un archivo local</span>
+                <input type="file" id="ent-file-picker" class="file-hidden">
+              </div>
+
+              <div class="file-inspection-box mt-3" id="ent-file-result-box">
+                <div class="file-meta-row">
+                  <span>Nombre de Archivo:</span>
+                  <strong id="ent-res-filename">ejemplo_auditoria_nequi.db</strong>
+                </div>
+                <div class="file-meta-row">
+                  <span>Tamaño:</span>
+                  <span id="ent-res-size">48.2 KB (49,356 bytes)</span>
+                </div>
+                <div class="file-meta-row">
+                  <span>Firma Criptográfica SHA-256:</span>
+                  <code id="ent-res-hash" class="hash-string-block">a9f4c382109bcde6174a89901f4c781190bc9837261904aef726019a873199bc</code>
+                </div>
+              </div>
+
+              <div class="sandbox-actions mt-3">
+                <button class="btn btn-sm btn-outline w-100" id="btn-copy-ent-hash">
+                  <i data-lucide="copy"></i> Copiar Hash para Cadena de Custodia
+                </button>
+                <button class="btn btn-sm btn-secondary w-100 mt-2" onclick="switchTab('tab-report')">
+                  <i data-lucide="arrow-right"></i> Llevar al Generador de Informe
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: SUSTENTACIÓN Y DIAPOSITIVAS OFICIALES -->
+    <!-- ========================================== -->
+    <section id="tab-slides" class="tab-pane">
+      <div class="slides-viewer-container">
+        <!-- Presentation Header Controls -->
+        <div class="slides-toolbar">
+          <div class="slide-meta-info">
+            <span class="pill-badge">DIAPOSITIVA OFICIAL <span id="current-slide-num">1</span> DE 11</span>
+            <h2 id="current-slide-title" class="slide-active-title">Portada Profesional - Proyecto LIFORM</h2>
+          </div>
+          <div class="slides-nav-controls">
+            <button class="btn btn-sm btn-outline" id="btn-prev-slide" title="Diapositiva anterior">
+              <i data-lucide="chevron-left"></i> Anterior
+            </button>
+            <button class="btn btn-sm btn-primary" id="btn-next-slide" title="Diapositiva siguiente">
+              Siguiente <i data-lucide="chevron-right"></i>
+            </button>
+            <button class="btn btn-sm btn-secondary" id="btn-fullscreen-slide" title="Ver en pantalla completa">
+              <i data-lucide="maximize"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Slide Display & Speaker Script Split -->
+        <div class="slides-main-layout">
+          <!-- Slide Graphic Canvas -->
+          <div class="slide-graphic-wrapper">
+            <div class="slide-image-container" id="slide-img-box">
+              <img id="active-slide-img" src="assets/slides/slide1.webp" alt="Diapositiva oficial LIFORM" class="slide-img">
+            </div>
+            <!-- Slide Thumbnails Strip -->
+            <div class="slide-thumbnails-strip" id="thumbnails-container"></div>
+          </div>
+
+          <!-- Speaker Script & Technical Explanation Panel -->
+          <div class="speaker-notes-panel">
+            <div class="panel-header">
+              <div class="panel-title-group">
+                <i data-lucide="mic" class="text-patina"></i>
+                <h3>Guion de Sustentación del Expositor</h3>
+              </div>
+              <span class="meta-tag font-mono">Expositor: Luis Angel Olivera</span>
+            </div>
+
+            <div class="speaker-speech-box">
+              <div class="speech-quote-icon">“</div>
+              <p id="speaker-speech-text" class="speech-text">
+                Cargando guion de sustentación...
+              </p>
+            </div>
+
+            <div class="technical-deepdive-box">
+              <div class="deepdive-header">
+                <i data-lucide="layers" class="text-patina"></i>
+                <h4>Contexto Técnico & Elementos Clave</h4>
+              </div>
+              <div id="speaker-technical-details" class="deepdive-content"></div>
+            </div>
+
+            <div class="slide-context-actions" id="slide-context-actions"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: ESTACIÓN PLATFORM-TOOLS (DEMO PRÁCTICA) -->
+    <!-- ========================================== -->
+    <section id="tab-lab" class="tab-pane">
+      <div class="lab-workspace-grid">
+        
+        <!-- Left: Command Guide & Steps -->
+        <div class="lab-sidebar">
+          <div class="lab-guide-header">
+            <div class="guide-title-row">
+              <i data-lucide="terminal" class="text-cyan"></i>
+              <h3>Guía de Comandos Forenses</h3>
+            </div>
+            <p class="guide-sub">Demostración en vivo sobre dispositivo objetivo <strong>Xiaomi Redmi 12</strong></p>
+          </div>
+
+          <!-- Steps List -->
+          <div class="lab-steps-list">
+            
+            <div class="step-card active" data-step="1">
+              <div class="step-badge">PASO 1</div>
+              <div class="step-info">
+                <h4>Establecer Canal Forense</h4>
+                <p class="step-cmd font-mono">adb devices</p>
+              </div>
+              <button class="btn btn-xs btn-primary run-step-btn" data-step="1">
+                <i data-lucide="play"></i>
+              </button>
+            </div>
+
+            <div class="step-card" data-step="2">
+              <div class="step-badge">PASO 2</div>
+              <div class="step-info">
+                <h4>Perfilado Social y Financiero</h4>
+                <p class="step-cmd font-mono">adb shell pm list packages -3</p>
+              </div>
+              <button class="btn btn-xs btn-primary run-step-btn" data-step="2">
+                <i data-lucide="play"></i>
+              </button>
+            </div>
+
+            <div class="step-card" data-step="3">
+              <div class="step-badge">PASO 3</div>
+              <div class="step-info">
+                <h4>Adquisición Evidencia EXIF (GPS)</h4>
+                <p class="step-cmd font-mono">adb pull PXL_20260508...jpg</p>
+              </div>
+              <button class="btn btn-xs btn-primary run-step-btn" data-step="3">
+                <i data-lucide="play"></i>
+              </button>
+            </div>
+
+            <div class="step-card" data-step="4">
+              <div class="step-badge">PASO 4</div>
+              <div class="step-info">
+                <h4>Adquisición Video y Línea de Tiempo</h4>
+                <p class="step-cmd font-mono">adb pull VID_20260909...mp4</p>
+              </div>
+              <button class="btn btn-xs btn-primary run-step-btn" data-step="4">
+                <i data-lucide="play"></i>
+              </button>
+            </div>
+
+            <div class="step-card warning-step" data-step="plan-b">
+              <div class="step-badge warning">PLAN B</div>
+              <div class="step-info">
+                <h4>Reiniciar Daemon Forense</h4>
+                <p class="step-cmd font-mono">adb kill-server</p>
+              </div>
+              <button class="btn btn-xs btn-outline-warning run-step-btn" data-step="plan-b">
+                <i data-lucide="rotate-ccw"></i>
+              </button>
+            </div>
+
+            <div class="step-card control-step" data-step="edl">
+              <div class="step-badge purple">PREGUNTA CONTROL</div>
+              <div class="step-info">
+                <h4>Bypass Pantalla Bloqueada (EDL/BROM)</h4>
+                <p class="step-cmd font-mono">hardware bypass SoC direct NAND</p>
+              </div>
+              <button class="btn btn-xs btn-outline-purple run-step-btn" data-step="edl">
+                <i data-lucide="cpu"></i>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Device Connection Status Box -->
+          <div class="device-status-box">
+            <div class="device-header">
+              <span class="device-name"><i data-lucide="smartphone"></i> Xiaomi Redmi 12</span>
+              <span class="device-badge connected" id="device-conn-state">CONECTADO</span>
+            </div>
+            <div class="device-details">
+              <div class="device-row"><span>Estado USB:</span> <strong id="dev-usb-mode">Depuración Autorizada</strong></div>
+              <div class="device-row"><span>Modo Red:</span> <strong class="text-patina">Modo Avión (RF Aislado)</strong></div>
+              <div class="device-row"><span>Batería:</span> <strong>84% (Carga Estable)</strong></div>
+              <div class="device-row"><span>Handshake:</span> <span class="font-mono text-cyan">OK (RSA Validado)</span></div>
+            </div>
+            <button class="btn btn-xs btn-outline w-100 mt-2" id="btn-toggle-device">
+              <i data-lucide="refresh-cw"></i> Simular Desconexión / Reconexión
+            </button>
+          </div>
+        </div>
+
+        <!-- Center / Right: The Interactive Platform-Tools Windows Terminal -->
+        <div class="lab-terminal-area">
+          <div class="terminal-window">
+            <!-- Terminal Titlebar -->
+            <div class="terminal-titlebar">
+              <div class="terminal-window-buttons">
+                <span class="win-btn win-close"></span>
+                <span class="win-btn win-min"></span>
+                <span class="win-btn win-max"></span>
+              </div>
+              <div class="terminal-title font-mono">
+                Símbolo del sistema - Platform-Tools Windows (Redmi 12 Forensic Station)
+              </div>
+              <div class="terminal-actions">
+                <button class="term-tool-btn" id="btn-clear-term" title="Limpiar pantalla">
+                  <i data-lucide="trash-2"></i>
+                </button>
+                <button class="term-tool-btn" id="btn-copy-term" title="Copiar salida de terminal">
+                  <i data-lucide="copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Terminal Output Body -->
+            <div class="terminal-body" id="term-body">
+              <div class="term-line welcome-line">
+                Microsoft Windows [Versión 10.0.19045.4529]<br>
+                (c) Microsoft Corporation. Todos los derechos reservados.<br><br>
+                Directorio de Trabajo de Laboratorio LIFORM:<br>
+                <span class="text-cyan">C:\Users\Luis Angel\platform-tools-latest-windows\platform-tools</span><br>
+                Dispositivo de prueba: <span class="text-patina">Xiaomi Redmi 12 (MediaTek Helio G88, Android 13)</span><br>
+                Escriba 'help' o presione los botones de la izquierda para ejecutar los pasos.
+              </div>
+              <div class="term-line" id="term-history"></div>
+              
+              <!-- Input Prompt -->
+              <div class="term-prompt-line">
+                <span class="term-prompt">C:\Users\Luis Angel\platform-tools-latest-windows\platform-tools&gt;</span>
+                <input type="text" id="term-input" class="term-input" autocomplete="off" spellcheck="false" autofocus placeholder="Escriba un comando (ej: adb devices)...">
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Live Artifacts Drawer -->
+          <div class="lab-artifacts-drawer" id="artifacts-drawer">
+            <div class="drawer-header">
+              <div class="drawer-title">
+                <i data-lucide="folder-search" class="text-cyan"></i>
+                <span>Visor de Evidencia Extraída (En Vivo)</span>
+              </div>
+              <div class="drawer-tabs">
+                <button class="drawer-tab active" data-view="view-apps"><i data-lucide="file-text"></i> apps_sospechosas.txt</button>
+                <button class="drawer-tab" data-view="view-photo"><i data-lucide="image"></i> Evidencia Foto & GPS</button>
+                <button class="drawer-tab" data-view="view-video"><i data-lucide="video"></i> Evidencia Video</button>
+                <button class="drawer-tab" data-view="view-bypass"><i data-lucide="cpu"></i> Diagrama EDL/BROM</button>
+              </div>
+            </div>
+
+            <div class="drawer-body">
+              <!-- View 1: Notepad apps_sospechosas.txt -->
+              <div class="artifact-view active" id="view-apps">
+                <div class="notepad-mockup">
+                  <div class="notepad-header">
+                    <span>apps_sospechosas.txt - Bloc de notas (Extracción de Aplicaciones de Terceros)</span>
+                  </div>
+                  <div class="notepad-content">
+                    <pre>package:com.whatsapp
+package:org.telegram.messenger
+package:com.nequi.MobileApp
+package:net.bancolombia.cit
+package:co.gov.registraduria.ceduladigital
+package:com.openai.chatgpt
+package:com.anthropic.claude
+package:com.instagram.android
+package:com.facebook.katana
+package:com.daviplata.davivienda</pre>
+                  </div>
+                  <div class="notepad-footer">
+                    <span>10 paquetes extraídos &middot; UTF-8 &middot; Sector de interés: /data/data/com.nequi.MobileApp /databases</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View 2: Photo Evidence with GPS & EXIF Viewer -->
+              <div class="artifact-view" id="view-photo">
+                <div class="photo-exif-grid">
+                  <div class="photo-preview-box">
+                    <div class="photo-header">
+                      <span>PXL_20260508_134622072.PORTRAIT.ORIGINAL.jpg</span>
+                      <span class="meta-tag font-mono">Cámara Gcam</span>
+                    </div>
+                    <div class="photo-frame">
+                      <div class="evidence-watermark font-mono">EVIDENCIA LIFORM #001</div>
+                      <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Evidencia fotográfica" class="evidence-img">
+                    </div>
+                  </div>
+
+                  <div class="exif-metadata-box">
+                    <h4>Metadatos Forenses EXIF Extraídos</h4>
+                    <div class="exif-table">
+                      <div class="exif-row"><span>Cámara:</span> <strong>Xiaomi Redmi 12 / GCam Mod</strong></div>
+                      <div class="exif-row"><span>Fecha/Hora Original:</span> <strong>2026:05:08 13:46:22</strong></div>
+                      <div class="exif-row"><span>Resolución:</span> <strong>4000 x 3000 (12.0 MP)</strong></div>
+                      <div class="exif-row"><span>Apertura / ISO:</span> <strong>f/1.8 &middot; ISO 125</strong></div>
+                      <div class="exif-row"><span>Coordenadas GPS:</span> <strong class="text-cyan font-mono">9.304722° N, -75.397778° W</strong></div>
+                      <div class="exif-row"><span>Ubicación Estimada:</span> <strong>Sincelejo, Sucre, Colombia</strong></div>
+                      <div class="exif-row"><span>Hash SHA-256:</span> <code class="hash-string font-mono">4f53cda18c2baa0c0354bb...</code></div>
+                    </div>
+                    
+                    <!-- Leaflet Map -->
+                    <div class="map-container" id="forensic-gps-map"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View 3: Video Evidence Timeline -->
+              <div class="artifact-view" id="view-video">
+                <div class="video-preview-grid">
+                  <div class="video-player-mock">
+                    <div class="video-header">
+                      <span>VID_20260909_192554.mp4 (Línea de Tiempo Cronológica)</span>
+                    </div>
+                    <div class="video-screen">
+                      <i data-lucide="play-circle" class="video-play-icon"></i>
+                      <div class="video-meta-overlay font-mono">
+                        <span>REC: 2026-09-09 19:25:54 EST</span>
+                        <span>DURACIÓN: 00:01:42</span>
+                        <span>FPS: 30.00 &middot; H.264</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="video-timeline-info">
+                    <h4>Análisis Cronológico y de Integridad</h4>
+                    <ul class="timeline-bullets">
+                      <li><strong>Marca de tiempo de creación:</strong> 09 de Septiembre de 2026 - 19:25:54 (Hora local).</li>
+                      <li><strong>Modificación de metadatos:</strong> Sin inconsistencias entre cabeceras <code>mvhd</code> y <code>tkhd</code>.</li>
+                      <li><strong>Hash de Preservación SHA-256:</strong>
+                        <div class="hash-badge font-mono">7a8b9c0d1e2f3456789abcdef0123456789abcdef0123456789abcdef012345</div>
+                      </li>
+                      <li><strong>Destino:</strong> Se integra en la Sección 5 (Hallazgos) de la Plantilla de Informe Pericial.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View 4: Hardware EDL / BROM Bypass Diagram -->
+              <div class="artifact-view" id="view-bypass">
+                <div class="bypass-concept-grid">
+                  <div class="bypass-diagram">
+                    <h4>Bypass a Nivel de Hardware (Pantalla Bloqueada)</h4>
+                    <div class="bypass-flow">
+                      <div class="flow-step danger-box">
+                        <span class="flow-title">NIVEL 1: Sistema Operativo (Android 13)</span>
+                        <p>Pantalla Bloqueada por PIN/Patrón &middot; Depuración USB Apagada &middot; ADB Bloqueado ❌</p>
+                      </div>
+                      <div class="flow-arrow"><i data-lucide="arrow-down"></i> Omisión de Kernel (Hardware Trigger)</div>
+                      <div class="flow-step warning-box">
+                        <span class="flow-title">NIVEL 2: Procesador SoC (MediaTek Helio G88 / Qualcomm)</span>
+                        <p>Modo de Descarga de Emergencia (EDL Test Points o BROM Download Agent) ✔️</p>
+                      </div>
+                      <div class="flow-arrow"><i data-lucide="arrow-down"></i> Adquisición Física Directa</div>
+                      <div class="flow-step success-box">
+                        <span class="flow-title">NIVEL 3: Almacenamiento NAND / UFS</span>
+                        <p>Volcado completo Bit a Bit (Raw Physical Image) &middot; Extracción Criptográfica íntegra ✔️</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bypass-explanation">
+                    <h4>Respuesta a la Pregunta de Control del Jurado</h4>
+                    <p>
+                      Si el terminal objetivo está bloqueado y no hay acceso a la pantalla para autorizar la depuración USB:
+                    </p>
+                    <blockquote class="forensic-quote">
+                      "El laboratorio LIFORM no se detiene en el límite lógico del sistema operativo. Se ejecuta un bypass de hardware forzando al procesador (Qualcomm EDL o MediaTek Boot ROM). Esto permite comunicarse directamente con el controlador de la memoria NAND flash, volcando los datos brutos bit a bit con total validez científica y forense."
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 5: GENERADOR DE INFORME Y CUSTODIA     -->
+    <!-- ========================================== -->
+    <section id="tab-report" class="tab-pane">
+      <div class="report-creator-container">
+        
+        <!-- Controls Toolbar -->
+        <div class="report-toolbar no-print">
+          <div class="report-toolbar-info">
+            <h2>Generador Oficial de Informe de Auditoría Forense</h2>
+            <p>Conforme a la Plantilla Oficial LIFORM y la norma ISO/IEC 27037:2012</p>
+          </div>
+          <div class="report-toolbar-actions">
+            <button class="btn btn-outline" id="btn-load-demo-report">
+              <i data-lucide="file-input"></i> Cargar Caso Piloto Redmi 12
+            </button>
+            <button class="btn btn-secondary" id="btn-reset-report">
+              <i data-lucide="rotate-ccw"></i> Limpiar
+            </button>
+            <button class="btn btn-outline-primary" id="btn-calc-live-hash">
+              <i data-lucide="binary"></i> Hasheador SHA-256 en Vivo
+            </button>
+            <button class="btn btn-primary" onclick="window.print()">
+              <i data-lucide="printer"></i> Exportar a PDF / Imprimir
+            </button>
+          </div>
+        </div>
+
+        <!-- The Printable Document Container -->
+        <div class="printable-report-paper" id="forensic-report-paper">
+          
+          <!-- Document Header -->
+          <div class="report-doc-header">
+            <div class="report-brand">
+              <div class="report-logo-text">LIFORM</div>
+              <div class="report-subbrand">
+                LABORATORIO DE INFORMÁTICA FORENSE MÓVIL Y RECUPERACIÓN DE DATOS CRÍTICOS PARA EMPRESAS
+              </div>
+            </div>
+            <div class="report-seal-box">
+              <div class="seal-title">INFORME DE AUDITORÍA FORENSE</div>
+              <div class="seal-confidential">DOCUMENTO CONFIDENCIAL &middot; USO EXCLUSIVO CLIENTE Y ANALISTAS</div>
+              <div class="seal-iso">NORMA APLICADA: ISO/IEC 27037:2012</div>
+            </div>
+          </div>
+
+          <!-- Section 1: Encabezado del Caso -->
+          <div class="report-section">
+            <h3 class="section-heading">1. Encabezado del Caso</h3>
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label>N.° de Caso (Consecutivo Interno):</label>
+                <input type="text" id="rep-case-num" value="LIFORM-2026-001" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Fecha de Apertura:</label>
+                <input type="date" id="rep-open-date" value="2026-10-26" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Fecha de Cierre:</label>
+                <input type="date" id="rep-close-date" value="2026-10-28" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Analista(s) Responsable(s):</label>
+                <input type="text" id="rep-analysts" value="Luis Angel Olivera Hernández, Luis Andrés Mendoza Herazo" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Empresa Solicitante (Razón Social):</label>
+                <input type="text" id="rep-company" value="Distribuciones Comerciales de Sucre S.A.S." class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Persona de Contacto / Cargo:</label>
+                <input type="text" id="rep-contact" value="Carlos Mario Vélez - Director de Operaciones TI" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group mt-2">
+              <label>Motivo del Caso:</label>
+              <div class="checkbox-row">
+                <label class="check-item"><input type="checkbox" id="m-loss"> Pérdida accidental de información</label>
+                <label class="check-item"><input type="checkbox" id="m-hardware"> Falla técnica del dispositivo</label>
+                <label class="check-item"><input type="checkbox" id="m-security" checked> Sospecha de incidente de seguridad / fuga</label>
+                <label class="check-item"><input type="checkbox" id="m-legal" checked> Soporte a proceso disciplinario o legal interno</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Identificación del Dispositivo -->
+          <div class="report-section">
+            <h3 class="section-heading">2. Identificación del Dispositivo</h3>
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label>Marca:</label>
+                <input type="text" id="rep-brand" value="Xiaomi" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Modelo Comercial:</label>
+                <input type="text" id="rep-model" value="Redmi 12 (23053RN02L)" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>IMEI / N.° de Serie:</label>
+                <input type="text" id="rep-serial" value="106e57767d74 / IMEI: 864209061234567" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Sistema Operativo y Versión:</label>
+                <input type="text" id="rep-os" value="Android 13 (MIUI 14.0.5 Global)" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Capacidad de Almacenamiento:</label>
+                <input type="text" id="rep-storage" value="128 GB eMMC 5.1 / 8 GB RAM" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Estado Físico en Recepción:</label>
+                <select id="rep-phys-state" class="form-control">
+                  <option value="Sin daños visibles" selected>Sin daños visibles</option>
+                  <option value="Pantalla dañada o quebrada">Pantalla dañada o quebrada</option>
+                  <option value="Daño por exposición a líquido">Daño por exposición a líquido</option>
+                  <option value="Chasis deformado">Chasis deformado</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Cadena de Custodia ISO/IEC 27037 -->
+          <div class="report-section">
+            <div class="section-title-row">
+              <h3 class="section-heading">3. Cadena de Custodia (ISO/IEC 27037:2012)</h3>
+              <button class="btn btn-xs btn-outline no-print" id="btn-add-custody-row">
+                <i data-lucide="plus"></i> Añadir Registro
+              </button>
+            </div>
+            <p class="section-note">
+              Registro cronológico ininterrumpido de toda persona que tuvo contacto físico o lógico con el dispositivo.
+            </p>
+
+            <table class="report-table" id="table-custody">
+              <thead>
+                <tr>
+                  <th style="width: 18%;">Fecha / Hora</th>
+                  <th style="width: 25%;">Responsable</th>
+                  <th style="width: 37%;">Acción Realizada</th>
+                  <th style="width: 15%;">Firma / Ref</th>
+                  <th class="no-print" style="width: 5%;"></th>
+                </tr>
+              </thead>
+              <tbody id="custody-tbody">
+                <tr>
+                  <td><input type="text" value="26/10/2026 09:15" class="cell-input"></td>
+                  <td><input type="text" value="Carlos Vélez (Cliente TI)" class="cell-input"></td>
+                  <td><input type="text" value="Entrega de terminal Redmi 12 en bolsa antiestática" class="cell-input"></td>
+                  <td><input type="text" value="[Firma digital]" class="cell-input"></td>
+                  <td class="no-print text-center"><button class="btn-del-row">&times;</button></td>
+                </tr>
+                <tr>
+                  <td><input type="text" value="26/10/2026 09:30" class="cell-input"></td>
+                  <td><input type="text" value="Luis Angel Olivera (LIFORM)" class="cell-input"></td>
+                  <td><input type="text" value="Recepción, aislamiento Faraday, verificación física" class="cell-input"></td>
+                  <td><input type="text" value="[L.A.O.H.]" class="cell-input"></td>
+                  <td class="no-print text-center"><button class="btn-del-row">&times;</button></td>
+                </tr>
+                <tr>
+                  <td><input type="text" value="26/10/2026 10:45" class="cell-input"></td>
+                  <td><input type="text" value="Luis Andrés Mendoza (LIFORM)" class="cell-input"></td>
+                  <td><input type="text" value="Conexión en estación Platform-Tools y extracción lógica" class="cell-input"></td>
+                  <td><input type="text" value="[L.A.M.H.]" class="cell-input"></td>
+                  <td class="no-print text-center"><button class="btn-del-row">&times;</button></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="hash-validation-grid mt-2">
+              <div class="hash-field">
+                <label>Hash SHA-256 — Adquisición Inicial:</label>
+                <input type="text" id="hash-initial" value="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" class="form-control font-mono">
+              </div>
+              <div class="hash-field">
+                <label>Hash SHA-256 — Verificación Final:</label>
+                <input type="text" id="hash-final" value="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" class="form-control font-mono">
+              </div>
+            </div>
+            <div class="hash-status-banner">
+              <i data-lucide="check-check" class="text-patina"></i>
+              <span><strong>Verificación de Integridad Matemática:</strong> Hashes idénticos. No existe alteración de bit alguno entre la recepción y el informe final.</span>
+            </div>
+          </div>
+
+          <!-- Section 4: Metodología Aplicada -->
+          <div class="report-section">
+            <h3 class="section-heading">4. Metodología Aplicada</h3>
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label>Herramientas de Adquisición:</label>
+                <input type="text" id="rep-tools" value="Google Platform-Tools v35.0, Autopsy 4.21, Andriller 3.6" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Tipo de Extracción:</label>
+                <select id="rep-extract-type" class="form-control">
+                  <option value="Lógica Dirigida (ADB Bridge & Package Enumeration)" selected>Lógica Dirigida (ADB Bridge & Package Enumeration)</option>
+                  <option value="De Sistema de Archivos (File System Dump)">De Sistema de Archivos (File System Dump)</option>
+                  <option value="Física Bit a Bit (EDL / BROM Mode)">Física Bit a Bit (EDL / BROM Mode)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Norma de Referencia:</label>
+                <input type="text" value="ISO/IEC 27037:2012 (Directrices para evidencia digital)" readonly class="form-control bg-dark">
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 5: Hallazgos -->
+          <div class="report-section">
+            <div class="section-title-row">
+              <h3 class="section-heading">5. Hallazgos Periciales</h3>
+              <button class="btn btn-xs btn-outline no-print" id="btn-add-finding-row">
+                <i data-lucide="plus"></i> Añadir Hallazgo
+              </button>
+            </div>
+            <table class="report-table" id="table-findings">
+              <thead>
+                <tr>
+                  <th style="width: 5%;">N.°</th>
+                  <th style="width: 35%;">Descripción del Hallazgo</th>
+                  <th style="width: 25%;">Ubicación / Origen</th>
+                  <th style="width: 15%;">Relevancia</th>
+                  <th style="width: 15%;">Observaciones</th>
+                  <th class="no-print" style="width: 5%;"></th>
+                </tr>
+              </thead>
+              <tbody id="findings-tbody">
+                <tr>
+                  <td class="text-center">1</td>
+                  <td><input type="text" value="Paquetes oficiales de transacciones financieras y banca móvil detectados (Nequi, Bancolombia)" class="cell-input"></td>
+                  <td><input type="text" value="pm list packages -3" class="cell-input"></td>
+                  <td>
+                    <select class="cell-select badge-select alta">
+                      <option value="Alta" selected>Alta</option>
+                      <option value="Media">Media</option>
+                      <option value="Baja">Baja</option>
+                    </select>
+                  </td>
+                  <td><input type="text" value="Bases SQLite auditables" class="cell-input"></td>
+                  <td class="no-print text-center"><button class="btn-del-row">&times;</button></td>
+                </tr>
+                <tr>
+                  <td class="text-center">2</td>
+                  <td><input type="text" value="Fotografía clave con metadatos EXIF satelitales (GPS: 9.304722° N, -75.397778° W)" class="cell-input"></td>
+                  <td><input type="text" value="/sdcard/DCIM/Camera/PXL_20260508...jpg" class="cell-input"></td>
+                  <td>
+                    <select class="cell-select badge-select alta">
+                      <option value="Alta" selected>Alta</option>
+                      <option value="Media">Media</option>
+                      <option value="Baja">Baja</option>
+                    </select>
+                  </td>
+                  <td><input type="text" value="Ubica el equipo en Sincelejo" class="cell-input"></td>
+                  <td class="no-print text-center"><button class="btn-del-row">&times;</button></td>
+                </tr>
+                <tr>
+                  <td class="text-center">3</td>
+                  <td><input type="text" value="Registro de video con timestamp cronológico (19:25:54) sin indicios de manipulación" class="cell-input"></td>
+                  <td><input type="text" value="/sdcard/DCIM/Camera/VID_20260909...mp4" class="cell-input"></td>
+                  <td>
+                    <select class="cell-select badge-select media">
+                      <option value="Alta">Alta</option>
+                      <option value="Media" selected>Media</option>
+                      <option value="Baja">Baja</option>
+                    </select>
+                  </td>
+                  <td><input type="text" value="Línea de tiempo validada" class="cell-input"></td>
+                  <td class="no-print text-center"><button class="btn-del-row">&times;</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Section 6: Anexos -->
+          <div class="report-section">
+            <h3 class="section-heading">6. Anexos y Documentos Adjuntos</h3>
+            <div class="checkbox-grid">
+              <label><input type="checkbox" checked> Capturas de pantalla de la evidencia</label>
+              <label><input type="checkbox" checked> Listado de paquetes (apps_sospechosas.txt)</label>
+              <label><input type="checkbox" checked> Reporte matemático de hash SHA-256</label>
+              <label><input type="checkbox" checked> Formulario físico de cadena de custodia (escaneado)</label>
+              <label><input type="checkbox"> Volcado raw de memoria (disponible en NAS seguro)</label>
+            </div>
+          </div>
+
+          <!-- Section 7: Conclusión y Firmas -->
+          <div class="report-section">
+            <h3 class="section-heading">7. Conclusión del Caso y Validación</h3>
+            <div class="form-group">
+              <label>Dictamen / Conclusión Pericial:</label>
+              <textarea id="rep-conclusion" rows="3" class="form-control">La adquisición lógica dirigida realizada sobre el terminal Xiaomi Redmi 12 se ejecutó de forma estricta y conforme a los protocolos internacionales de la norma ISO/IEC 27037:2012. Se certifica que los elementos materiales probatorios extraídos (perfilado de apps, evidencia fotográfica con coordenadas GPS y video cronológico) mantienen plena inalterabilidad respaldada por sus firmas criptográficas SHA-256, constituyendo prueba admisible y auditable.</textarea>
+            </div>
+
+            <!-- Signatures Grid -->
+            <div class="signatures-grid mt-4">
+              <div class="sig-box">
+                <div class="sig-line"></div>
+                <div class="sig-name">LUIS ANGEL OLIVERA HERNANDEZ</div>
+                <div class="sig-title">Analista Forense Responsable &middot; LIFORM</div>
+                <div class="sig-date">Fecha: 28/10/2026</div>
+              </div>
+              <div class="sig-box">
+                <div class="sig-line"></div>
+                <div class="sig-name">CARLOS MARIO VÉLEZ</div>
+                <div class="sig-title">Recepción a Conformidad &middot; Cliente Solicitante</div>
+                <div class="sig-date">Fecha: 28/10/2026</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Report Watermark / Footer -->
+          <div class="report-doc-footer">
+            <span>LIFORM &middot; Corporación Unificada Nacional de Educación Superior (CUN) &middot; Sincelejo 2026</span>
+            <span>Página 1 de 1 &middot; Documento Oficial Inmutable</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 6: PARÁMETROS, ARQUITECTURA Y COSTOS   -->
+    <!-- ========================================== -->
+    <section id="tab-specs" class="tab-pane">
+      <div class="section-block">
+        
+        <header class="section-header">
+          <h2 class="section-heading">Parámetros Técnicos de Operación & Matriz de Extracción</h2>
+          <p class="section-sub">Estándares del laboratorio para garantizar auditabilidad y repetibilidad.</p>
+        </header>
+
+        <div class="two-col-layout">
+          <!-- Operating Specs Table -->
+          <div class="panel">
+            <h3 class="panel-title"><i data-lucide="sliders" class="text-cyan"></i> Matriz de Parámetros de Servicio</h3>
+            <table class="specs-table">
+              <tr>
+                <th>Parámetro</th>
+                <th>Especificación LIFORM</th>
+              </tr>
+              <tr>
+                <td>Sistemas Soportados</td>
+                <td>Android 8.0 en adelante &middot; iOS 13 en adelante</td>
+              </tr>
+              <tr>
+                <td>Tipos de Extracción</td>
+                <td>Lógica Dirigida, Sistema de Archivos, Física Bit a Bit</td>
+              </tr>
+              <tr>
+                <td>Verificación de Integridad</td>
+                <td>Cálculo y registro de Hash SHA-256 de cada volcado</td>
+              </tr>
+              <tr>
+                <td>SLA Tiempo de Respuesta</td>
+                <td>Entre 24 y 72 horas hábiles según complejidad</td>
+              </tr>
+              <tr>
+                <td>Almacenamiento de Evidencia</td>
+                <td>Servidor NAS cifrado, control RBAC, retención mín. 6 meses</td>
+              </tr>
+              <tr>
+                <td>Personal Requerido</td>
+                <td>Mínimo 1 analista forense y 1 auxiliar de cadena de custodia</td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- Extraction Levels Matrix -->
+          <div class="panel">
+            <h3 class="panel-title"><i data-lucide="layers" class="text-patina"></i> Matriz de Niveles de Extracción</h3>
+            <div class="extract-levels-list">
+              <div class="level-box">
+                <div class="level-header">
+                  <span class="level-num">NIVEL 1</span>
+                  <h4>Adquisición Lógica (Sistema Operativo)</h4>
+                  <span class="level-badge badge-foco">Foco de la Sustentación</span>
+                </div>
+                <p>Interactúa a través de APIs del sistema, copias de respaldo y ADB. No requiere alteración de firmware. Extrae paquetes, bases de datos de apps y almacenamiento multimedia público.</p>
+              </div>
+
+              <div class="level-box">
+                <div class="level-header">
+                  <span class="level-num">NIVEL 2</span>
+                  <h4>Extracción de Sistema de Archivos</h4>
+                  <span class="level-badge badge-sandbox">Acceso a Sandbox</span>
+                </div>
+                <p>Copia completa de particiones de datos montadas (/data). Permite recuperar registros de chat cifrados, cachés volátiles y archivos eliminados no compactados.</p>
+              </div>
+
+              <div class="level-box">
+                <div class="level-header">
+                  <span class="level-num">NIVEL 3</span>
+                  <h4>Extracción Física Bit a Bit (Hardware Bypass)</h4>
+                  <span class="level-badge badge-control">Pregunta de Control</span>
+                </div>
+                <p>Oprime el kernel mediante modos EDL (Qualcomm) o BROM (MediaTek). Copia cruda de la memoria NAND flash para teléfonos bloqueados o dañados lógicamente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Budget & Software Matrix -->
+        <div class="section-block mt-4">
+          <header class="section-header">
+            <h2 class="section-heading">Matriz de Software, Hardware Forense y Presupuesto</h2>
+            <p class="section-sub">Estrategia de inversión progresiva: inicio con Open Source sin costos de licenciamiento.</p>
+          </header>
+
+          <div class="budget-table-card">
+            <table class="budget-table">
+              <thead>
+                <tr>
+                  <th>Herramienta / Equipo</th>
+                  <th>Tipo</th>
+                  <th>Función Técnica en LIFORM</th>
+                  <th>Costo Estimado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="free-row">
+                  <td><strong>Autopsy</strong></td>
+                  <td>Software Open Source</td>
+                  <td>Análisis forense profundo y recuperación de archivos eliminados</td>
+                  <td><span class="badge-free">GRATUITO ($0 USD)</span></td>
+                </tr>
+                <tr class="free-row">
+                  <td><strong>FTK Imager</strong></td>
+                  <td>Software Gratuito</td>
+                  <td>Adquisición de imágenes forenses (formatos raw DD y E01)</td>
+                  <td><span class="badge-free">GRATUITO ($0 USD)</span></td>
+                </tr>
+                <tr class="free-row">
+                  <td><strong>Andriller</strong></td>
+                  <td>Software Open Source</td>
+                  <td>Extracción lógica y decodificación de artefactos Android</td>
+                  <td><span class="badge-free">GRATUITO ($0 USD)</span></td>
+                </tr>
+                <tr class="free-row">
+                  <td><strong>Android SDK Platform-Tools</strong></td>
+                  <td>Software Oficial Google</td>
+                  <td>Puente de depuración ADB, comunicación terminal y pull forense</td>
+                  <td><span class="badge-free">GRATUITO ($0 USD)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>MOBILedit Forensic Standard</strong></td>
+                  <td>Software Comercial</td>
+                  <td>Extracción avanzada multiplataforma (Android e iOS)</td>
+                  <td>Aprox. USD $2,250</td>
+                </tr>
+                <tr>
+                  <td><strong>Cellebrite UFED</strong></td>
+                  <td>Software/Hardware Comercial</td>
+                  <td>Estándar comercial de gama alta para bypass y desbloqueo</td>
+                  <td>Cotización directa</td>
+                </tr>
+                <tr class="hw-row">
+                  <td><strong>Bloqueadores de Escritura Forense</strong></td>
+                  <td>Hardware de Adquisición</td>
+                  <td>Evita alteraciones eléctricas y lógicas en memorias externas</td>
+                  <td>USD $300 - $600</td>
+                </tr>
+                <tr class="hw-row">
+                  <td><strong>Jaula de Faraday Portátil</strong></td>
+                  <td>Hardware de Preservación</td>
+                  <td>Aislamiento de señales electromagnéticas y borrado remoto</td>
+                  <td>USD $150 - $400</td>
+                </tr>
+                <tr class="hw-row">
+                  <td><strong>Servidor NAS Cifrado (RAID)</strong></td>
+                  <td>Hardware de Almacenamiento</td>
+                  <td>Custodia y respaldo redundante con control de acceso por roles</td>
+                  <td>USD $800 - $1,500</td>
+                </tr>
+                <tr class="hw-row">
+                  <td><strong>Estación de Trabajo Forense</strong></td>
+                  <td>Hardware de Cómputo</td>
+                  <td>Procesamiento multihilo de imágenes y hashing masivo</td>
+                  <td>USD $1,800 - $3,000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 16-Week Implementation Timeline -->
+        <div class="section-block mt-4">
+          <header class="section-header">
+            <h2 class="section-heading">Cronograma de Implementación Semestral (16 Semanas)</h2>
+            <p class="section-sub">Ciclo de vida por etapas adaptado a infraestructura de laboratorios tecnológicos.</p>
+          </header>
+
+          <div class="timeline-stepper">
+            <div class="t-step active">
+              <div class="t-num font-mono">1-3</div>
+              <div class="t-content">
+                <h4>Etapa 1: Preventa</h4>
+                <p>Levantamiento de requerimientos, diagnóstico inicial y definición de alcance.</p>
+                <span class="t-entregable">Entregable: Idea de Proyecto</span>
+              </div>
+            </div>
+            <div class="t-step active">
+              <div class="t-num font-mono">4-7</div>
+              <div class="t-content">
+                <h4>Etapa 2: Obra Gruesa / Arquitectura</h4>
+                <p>Diseño de los 5 subsistemas, selección de herramientas y parámetros.</p>
+                <span class="t-entregable">Entregable: Diseño Técnico</span>
+              </div>
+            </div>
+            <div class="t-step current">
+              <div class="t-num font-mono">8-11</div>
+              <div class="t-content">
+                <h4>Etapa 3: Terminación / Configuración</h4>
+                <p>Instalación de Platform-Tools, pruebas prácticas con Redmi 12 y custodia.</p>
+                <span class="t-entregable highlight">Fase Actual: Prototipo Funcional</span>
+              </div>
+            </div>
+            <div class="t-step">
+              <div class="t-num font-mono">12-14</div>
+              <div class="t-content">
+                <h4>Etapa 4: Finalización / Validación</h4>
+                <p>Ejecución de casos piloto simulados y validación contra ISO/IEC 27037.</p>
+                <span class="t-entregable">Entregable: Informe de Auditoría</span>
+              </div>
+            </div>
+            <div class="t-step">
+              <div class="t-num font-mono">15-16</div>
+              <div class="t-content">
+                <h4>Etapa 5: Asistencia al Cliente</h4>
+                <p>Capacitación en uso de protocolos y soporte preventivo/correctivo continuo.</p>
+                <span class="t-entregable">Entregable: Entrega y Certificación</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Interactive Modal for Live SHA-256 Hasher Tool -->
+  <div class="modal-backdrop" id="hash-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-hash">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title" id="modal-title-hash"><i data-lucide="binary" class="text-cyan"></i> Validador Criptográfico SHA-256 en Tiempo Real</div>
+        <button class="modal-close-btn" id="close-hash-modal" aria-label="Cerrar modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Pruebe en vivo la inmutabilidad de la norma ISO/IEC 27037. Escriba cualquier texto o suba un archivo para calcular su firma matemática con la Web Crypto API:</p>
+        
+        <div class="form-group mt-2">
+          <label>Texto a Hashear:</label>
+          <input type="text" id="live-hash-input" class="form-control" placeholder="Escriba un dato o nombre de archivo (ej. Redmi 12 - Caso 001)...">
+        </div>
+
+        <div class="form-group mt-2">
+          <label>O suba un archivo local para verificar su hash:</label>
+          <input type="file" id="live-file-input" class="form-control file-input">
+        </div>
+
+        <div class="hash-result-box mt-3">
+          <span class="hash-tag font-mono">FIRMA SHA-256 GENERADA:</span>
+          <div id="live-hash-result" class="hash-result-text font-mono">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</div>
+        </div>
+
+        <button class="btn btn-sm btn-outline mt-3" id="btn-copy-live-hash">
+          <i data-lucide="copy"></i> Copiar Hash para la Plantilla
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
